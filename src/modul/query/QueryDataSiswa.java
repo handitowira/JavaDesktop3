@@ -161,6 +161,22 @@ public class QueryDataSiswa implements DaoDataSiswa {
 
     @Override
     public List<ModelDataSiswa> getAllNis(String nis) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<ModelDataSiswa> list = new ArrayList<ModelDataSiswa>();
+        try {
+            PreparedStatement st = conn.prepareStatement(getAllNis);
+            st.setString(1, "%" + nis + "%");
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                ModelDataSiswa mds = new ModelDataSiswa();
+                mds.setNis(rs.getString(1));
+                mds.setNama(rs.getString(2));
+                mds.setAlamat(rs.getString(3));
+                mds.setNotelp(rs.getString(4));
+                list.add(mds);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DaoDataSiswa.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
     }
 }

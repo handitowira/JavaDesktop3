@@ -32,7 +32,7 @@ public class QueryDataSiswa implements DaoDataSiswa {
     final String loadNama = "";
     final String loadNis = "";
     final String getAll = "";
-    final String getAllName = "";
+    final String getAllNama = "";
     final String getAllNis = "";
     private ModelDataSiswa namaSiswa;
 
@@ -139,14 +139,28 @@ public class QueryDataSiswa implements DaoDataSiswa {
     }
 
     @Override
-    public List<ModelDataSiswa> getAll(String nama
-    ) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<ModelDataSiswa> getAll(String nama) {
+        List<ModelDataSiswa> list = new ArrayList<ModelDataSiswa>();
+        try {
+            PreparedStatement st = conn.prepareStatement(getAllNama);
+            st.setString(1, "%" + nama + "%");
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                ModelDataSiswa mds = new ModelDataSiswa();
+                mds.setNis(rs.getString(1));
+                mds.setNama(rs.getString(2));
+                mds.setAlamat(rs.getString(3));
+                mds.setNotelp(rs.getString(4));
+                list.add(mds);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DaoDataSiswa.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
     }
 
     @Override
-    public List<ModelDataSiswa> getAllNis(String nis
-    ) {
+    public List<ModelDataSiswa> getAllNis(String nis) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

@@ -28,7 +28,7 @@ public class FormDataSiswa extends javax.swing.JFrame {
     private List<ModelDataSiswa> records = new ArrayList<ModelDataSiswa>();
     private int row = 0;
     private boolean status;
-
+    
     public FormDataSiswa() {
         initComponents();
         this.pack();
@@ -37,6 +37,16 @@ public class FormDataSiswa extends javax.swing.JFrame {
         txtNama.setEnabled(false);
         txtAlamat.setEnabled(false);
         txtNotelp.setEnabled(false);
+    }
+    
+    public void loadRecords() {
+        try {
+            DBConnection conn = DBConnection.getInstance();
+            QueryDataSiswa daoDataSiswa = new QueryDataSiswa(conn.getCon());
+            records = daoDataSiswa.getAll();
+        } catch (SQLException ex) {
+            Logger.getLogger(FormDataSiswa.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

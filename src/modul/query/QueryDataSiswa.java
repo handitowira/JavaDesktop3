@@ -26,14 +26,14 @@ public class QueryDataSiswa implements DaoDataSiswa {
 
     private Connection conn = null;
 
-    final String insert = "";
-    final String update = "";
-    final String delete = "";
-    final String loadNama = "";
-    final String loadNis = "";
-    final String getAll = "";
-    final String getAllNama = "";
-    final String getAllNis = "";
+    final String insert = "INSERT INTO datasiswa(nis,nama,alamat,notelp) VALUES(?,?,?,?)";
+    final String update = "UPDATE datasiswa SET nama=?, alamat=?, notelp=? WHERE nis=?";
+    final String delete = "DELETE FROM datasiswa WHERE nis=?";
+    final String loadNama = "SELECT nis,nama,alamat,notelp FROM datasiswa WHERE nama=?";
+    final String loadNis = "SELECT nis,nama,alamat,notelp FROM datasiswa WHERE nis=?";
+    final String getAll = "SELECT nis,nama,alamat,notelp FROM datasiswa";
+    final String getAllNama = "SELECT * FROM WHERE nama like=?";
+    final String getAllNis = "SELECT * FROM WHERE nis like=?";
     private ModelDataSiswa namaSiswa;
 
     public QueryDataSiswa(Connection conn) {

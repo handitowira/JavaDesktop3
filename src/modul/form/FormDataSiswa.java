@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import modul.dao.DaoDataSiswa;
 
 /**
  *
@@ -28,17 +29,30 @@ public class FormDataSiswa extends javax.swing.JFrame {
     private List<ModelDataSiswa> records = new ArrayList<ModelDataSiswa>();
     private int row = 0;
     private boolean status;
-    
+
     public FormDataSiswa() {
         initComponents();
+        loadRecords();
+        updateRow();
         this.pack();
         this.setLocationRelativeTo(null);
+        txtFalse();
+    }
+
+    public void txtFalse() {
         txtNis.setEnabled(false);
         txtNama.setEnabled(false);
         txtAlamat.setEnabled(false);
         txtNotelp.setEnabled(false);
     }
-    
+
+    public void txtTrue() {
+        txtNis.setEnabled(true);
+        txtNama.setEnabled(true);
+        txtAlamat.setEnabled(true);
+        txtNotelp.setEnabled(true);
+    }
+
     public void loadRecords() {
         try {
             DBConnection conn = DBConnection.getInstance();
@@ -47,6 +61,61 @@ public class FormDataSiswa extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(FormDataSiswa.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public void updateRow() {
+        if (this.records.size() > 0) {
+            if (row < 0) {
+                row = 0;
+            }
+            ModelDataSiswa mds = records.get(row);
+            txtNis.setText(mds.getNis());
+            txtNama.setText(mds.getNama());
+            txtAlamat.setText(mds.getAlamat());
+            txtNotelp.setText(mds.getNotelp());
+        } else {
+            bersihkanForm();
+            editForm(false);
+        }
+    }
+
+    public void loadRecords2() {
+        try {
+            DBConnection conn = DBConnection.getInstance();
+            QueryDataSiswa dao = new QueryDataSiswa(conn.getCon());
+            records = dao.getAllNis(txtNis.getText());
+        } catch (SQLException ex) {
+            Logger.getLogger(FormDataSiswa.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void updateRow2() {
+        if (this.records.size() > 0) {
+            if (row < 0) {
+                row = 0;
+            }
+            ModelDataSiswa mds = records.get(row);
+            txtNis.setText(mds.getNis());
+            txtNama.setText(mds.getNama());
+            txtAlamat.setText(mds.getAlamat());
+            txtNotelp.setText(mds.getNotelp());
+        } else {
+            JOptionPane.showMessageDialog(this, "Not Found");
+        }
+    }
+
+    public void bersihkanForm() {
+        txtNis.setText("");
+        txtNama.setText("");
+        txtAlamat.setText("");
+        txtNotelp.setText("");
+    }
+
+    public void editForm(boolean x) {
+        txtNis.setEditable(x);
+        txtNama.setEditable(x);
+        txtAlamat.setEditable(x);
+        txtNotelp.setEditable(x);
     }
 
     /**
@@ -97,13 +166,39 @@ public class FormDataSiswa extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel6.setText("Proses Data");
 
+        txtNis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNisActionPerformed(evt);
+            }
+        });
+
         btnAdd.setText("Tambah Data");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
 
         btnEdit.setText("Edit Data");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
 
         btnDelete.setText("Hapus Data");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         btnSave.setText("Simpan Data");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
 
         btnExit.setText("Keluar");
         btnExit.addActionListener(new java.awt.event.ActionListener() {
@@ -209,7 +304,85 @@ public class FormDataSiswa extends javax.swing.JFrame {
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_btnExitActionPerformed
+
+    private void txtNisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNisActionPerformed
+        // TODO add your handling code here:
+        loadRecords2();
+        updateRow2();
+    }//GEN-LAST:event_txtNisActionPerformed
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        // TODO add your handling code here:
+        status = true;
+        editForm(true);
+        bersihkanForm();
+        txtNis.requestFocus();
+        txtTrue();
+    }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        // TODO add your handling code here:
+        if (status == true) {
+            try {
+                ModelDataSiswa mds = new ModelDataSiswa();
+                mds.setNis(txtNis.getText());
+                mds.setNama(txtNama.getText());
+                mds.setAlamat(txtAlamat.getText());
+                mds.setNotelp(txtNotelp.getText());
+                DBConnection conn = DBConnection.getInstance();
+                QueryDataSiswa dao = new QueryDataSiswa(conn.getCon());
+                dao.insert(mds);
+                JOptionPane.showMessageDialog(this, "Data Saved");
+                loadRecords();
+                updateRow();
+                txtFalse();
+            } catch (SQLException ex) {
+                Logger.getLogger(FormDataSiswa.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            try {
+                ModelDataSiswa mds = new ModelDataSiswa();
+                mds.setNis(txtNis.getText());
+                mds.setNama(txtNama.getText());
+                mds.setAlamat(txtAlamat.getText());
+                mds.setNotelp(txtNotelp.getText());
+                DBConnection conn = DBConnection.getInstance();
+                QueryDataSiswa dao = new QueryDataSiswa(conn.getCon());
+                dao.update(mds.getNis(), mds);
+                JOptionPane.showMessageDialog(this, "Data Update");
+                loadRecords();
+                updateRow();
+                txtFalse();
+            } catch (SQLException ex) {
+                Logger.getLogger(FormDataSiswa.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        // TODO add your handling code here:
+        status = false;
+        txtNis.requestFocus();
+        txtTrue();
+    }//GEN-LAST:event_btnEditActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        try {
+            ModelDataSiswa mds = new ModelDataSiswa();
+            mds.setNis(txtNis.getText());
+            DBConnection conn = DBConnection.getInstance();
+            QueryDataSiswa dao = new QueryDataSiswa(conn.getCon());
+            dao.delete(txtNis.getText());
+            JOptionPane.showMessageDialog(this, "Data Delete");
+            loadRecords();
+            updateRow();
+        } catch (SQLException ex) {
+            Logger.getLogger(FormDataSiswa.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
     /**
      * @param args the command line arguments

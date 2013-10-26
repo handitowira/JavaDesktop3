@@ -23,7 +23,7 @@ public interface DaoDataSiswa {
 
     public ModelDataSiswa loadNama(String nama);
 
-    public ModelDataSiswa load(String nis);
+    public ModelDataSiswa loadNis(String nis);
 
     public List<ModelDataSiswa> getAll();
 

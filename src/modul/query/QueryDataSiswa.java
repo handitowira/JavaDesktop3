@@ -99,7 +99,7 @@ public class QueryDataSiswa implements DaoDataSiswa {
     }
 
     @Override
-    public ModelDataSiswa load(String nis) {
+    public ModelDataSiswa loadNis(String nis) {
         ModelDataSiswa mds = null;
         try {
             PreparedStatement st = conn.prepareStatement(loadNis);

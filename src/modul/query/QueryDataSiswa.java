@@ -32,8 +32,8 @@ public class QueryDataSiswa implements DaoDataSiswa {
     final String loadNama = "SELECT nis,nama,alamat,notelp FROM datasiswa WHERE nama=?";
     final String loadNis = "SELECT nis,nama,alamat,notelp FROM datasiswa WHERE nis=?";
     final String getAll = "SELECT nis,nama,alamat,notelp FROM datasiswa";
-    final String getAllNama = "SELECT * FROM WHERE nama like=?";
-    final String getAllNis = "SELECT * FROM WHERE nis like=?";
+    final String getAllNama = "SELECT * FROM datasiswa WHERE nama like ?";
+    final String getAllNis = "SELECT * FROM datasiswa WHERE nis like ?";
     private ModelDataSiswa namaSiswa;
 
     public QueryDataSiswa(Connection conn) {

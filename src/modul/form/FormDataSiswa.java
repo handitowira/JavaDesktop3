@@ -84,6 +84,7 @@ public class FormDataSiswa extends javax.swing.JFrame {
             DBConnection conn = DBConnection.getInstance();
             QueryDataSiswa dao = new QueryDataSiswa(conn.getCon());
             records = dao.getAllNis(txtNis.getText());
+            txtFalse();
         } catch (SQLException ex) {
             Logger.getLogger(FormDataSiswa.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -99,8 +100,12 @@ public class FormDataSiswa extends javax.swing.JFrame {
             txtNama.setText(mds.getNama());
             txtAlamat.setText(mds.getAlamat());
             txtNotelp.setText(mds.getNotelp());
+            txtFalse();
         } else {
             JOptionPane.showMessageDialog(this, "Not Found");
+            txtFalse();
+            loadRecords();
+            updateRow();
         }
     }
 
@@ -144,6 +149,7 @@ public class FormDataSiswa extends javax.swing.JFrame {
         btnExit = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        btnCari = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -208,10 +214,17 @@ public class FormDataSiswa extends javax.swing.JFrame {
         });
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel7.setText("*Jika anda ingin mencari data ketikkan NIS lalu tekan 'Enter'");
+        jLabel7.setText("*Jika anda ingin mencari data klik tombol cari ketikkan NIS lalu tekan 'Enter'");
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel8.setText("Masukkan nis yang sudah ada");
+
+        btnCari.setText("Cari");
+        btnCari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCariActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -260,7 +273,9 @@ public class FormDataSiswa extends javax.swing.JFrame {
                                 .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel7)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(btnCari))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -294,9 +309,11 @@ public class FormDataSiswa extends javax.swing.JFrame {
                     .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -384,6 +401,11 @@ public class FormDataSiswa extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
+    private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
+        // TODO add your handling code here:
+        txtNis.setEnabled(true);
+    }//GEN-LAST:event_btnCariActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -421,6 +443,7 @@ public class FormDataSiswa extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnCari;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnExit;

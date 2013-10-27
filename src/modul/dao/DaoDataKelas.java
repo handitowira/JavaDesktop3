@@ -27,7 +27,7 @@ public interface DaoDataKelas {
 
     public List<ModelDataKelas> getAll();
 
-    public List<ModelDataKelas> getAllIdKelas(String IdKelas);
+    public List<ModelDataKelas> getAllIdKelas(String idKelas);
 
     public List<ModelDataKelas> getAllNamaKelas(String namaKelas);
 }

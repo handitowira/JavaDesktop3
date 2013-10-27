@@ -154,11 +154,11 @@ public class QueryDataKelas implements DaoDataKelas {
     }
 
     @Override
-    public List<ModelDataKelas> getAllIdKelas(String IdKelas) {
+    public List<ModelDataKelas> getAllIdKelas(String idKelas) {
         List<ModelDataKelas> list = new ArrayList<ModelDataKelas>();
         try {
             PreparedStatement st = conn.prepareStatement(getAllIdKelas);
-            st.setString(1, "&" + IdKelas + "%");
+            st.setString(1, "%" + idKelas + "%");
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 ModelDataKelas mdk = new ModelDataKelas();

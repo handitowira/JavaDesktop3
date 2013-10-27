@@ -28,7 +28,7 @@ public class FormDataKelas extends javax.swing.JFrame {
     private List<ModelDataKelas> records = new ArrayList<ModelDataKelas>();
     private int row = 0;
     private boolean status;
-
+    
     public FormDataKelas() {
         initComponents();
         loadRecords();
@@ -36,11 +36,11 @@ public class FormDataKelas extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         editForm(false);
     }
-
+    
     public void cekKolom() {
-
+        
     }
-
+    
     public void loadRecords() {
         try {
             DBConnection conn = DBConnection.getInstance();
@@ -50,7 +50,7 @@ public class FormDataKelas extends javax.swing.JFrame {
             Logger.getLogger(FormDataKelas.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     public void updateRow() {
         if (this.records.size() > 0) {
             if (row < 0) {
@@ -69,17 +69,18 @@ public class FormDataKelas extends javax.swing.JFrame {
             editForm(false);
         }
     }
-
+    
     public void loadRecords2() {
         try {
             DBConnection conn = DBConnection.getInstance();
             QueryDataKelas queryDk = new QueryDataKelas(conn.getCon());
             records = queryDk.getAllIdKelas(txtIdKelas.getText());
+            editForm(false);
         } catch (SQLException ex) {
             Logger.getLogger(FormDataKelas.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     public void updateRow2() {
         if (this.records.size() > 0) {
             if (row < 0) {
@@ -93,13 +94,14 @@ public class FormDataKelas extends javax.swing.JFrame {
             txtKetuaKelas.setText(mdk.getKetuakelas());
             txtJumlahSiswa.setText(mdk.getJumlahsiswa().toString());
             txtLetakKelas.setText(mdk.getLetak());
+            editForm(false);
         } else {
             JOptionPane.showMessageDialog(this, "Not Found");
             loadRecords();
             updateRow();
         }
     }
-
+    
     void bersihkanForm() {
         txtIdKelas.setText("");
         txtNamaKelas.setText("");
@@ -109,7 +111,7 @@ public class FormDataKelas extends javax.swing.JFrame {
         txtJumlahSiswa.setText("");
         txtLetakKelas.setText("");
     }
-
+    
     void editForm(boolean x) {
         txtIdKelas.setEditable(x);
         txtNamaKelas.setEditable(x);
@@ -150,6 +152,7 @@ public class FormDataKelas extends javax.swing.JFrame {
         btnDelete = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
+        btnCari = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -233,6 +236,13 @@ public class FormDataKelas extends javax.swing.JFrame {
             }
         });
 
+        btnCari.setText("Cari");
+        btnCari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCariActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -286,6 +296,10 @@ public class FormDataKelas extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(btnExit)))))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -329,7 +343,9 @@ public class FormDataKelas extends javax.swing.JFrame {
                     .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -447,6 +463,12 @@ public class FormDataKelas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtJumlahSiswaActionPerformed
 
+    private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
+        // TODO add your handling code here:
+        txtIdKelas.setEditable(true);
+        txtIdKelas.requestFocus();
+    }//GEN-LAST:event_btnCariActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -484,6 +506,7 @@ public class FormDataKelas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnCari;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnExit;

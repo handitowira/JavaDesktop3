@@ -36,21 +36,7 @@ public class FormDataSiswa extends javax.swing.JFrame {
         updateRow();
         this.pack();
         this.setLocationRelativeTo(null);
-        txtFalse();
-    }
-
-    public void txtFalse() {
-        txtNis.setEnabled(false);
-        txtNama.setEnabled(false);
-        txtAlamat.setEnabled(false);
-        txtNotelp.setEnabled(false);
-    }
-
-    public void txtTrue() {
-        txtNis.setEnabled(true);
-        txtNama.setEnabled(true);
-        txtAlamat.setEnabled(true);
-        txtNotelp.setEnabled(true);
+        editForm(false);
     }
 
     public void loadRecords() {
@@ -84,7 +70,7 @@ public class FormDataSiswa extends javax.swing.JFrame {
             DBConnection conn = DBConnection.getInstance();
             QueryDataSiswa dao = new QueryDataSiswa(conn.getCon());
             records = dao.getAllNis(txtNis.getText());
-            txtFalse();
+            editForm(false);
         } catch (SQLException ex) {
             Logger.getLogger(FormDataSiswa.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -100,10 +86,10 @@ public class FormDataSiswa extends javax.swing.JFrame {
             txtNama.setText(mds.getNama());
             txtAlamat.setText(mds.getAlamat());
             txtNotelp.setText(mds.getNotelp());
-            txtFalse();
+            editForm(false);
         } else {
             JOptionPane.showMessageDialog(this, "Not Found");
-            txtFalse();
+            editForm(false);
             loadRecords();
             updateRow();
         }
@@ -336,7 +322,7 @@ public class FormDataSiswa extends javax.swing.JFrame {
         editForm(true);
         bersihkanForm();
         txtNis.requestFocus();
-        txtTrue();
+        editForm(false);
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
@@ -354,7 +340,7 @@ public class FormDataSiswa extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Data Saved");
                 loadRecords();
                 updateRow();
-                txtFalse();
+                editForm(false);
             } catch (SQLException ex) {
                 Logger.getLogger(FormDataSiswa.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -371,7 +357,7 @@ public class FormDataSiswa extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Data Update");
                 loadRecords();
                 updateRow();
-                txtFalse();
+                editForm(false);
             } catch (SQLException ex) {
                 Logger.getLogger(FormDataSiswa.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -382,7 +368,7 @@ public class FormDataSiswa extends javax.swing.JFrame {
         // TODO add your handling code here:
         status = false;
         txtNis.requestFocus();
-        txtTrue();
+        editForm(true);
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
@@ -403,7 +389,8 @@ public class FormDataSiswa extends javax.swing.JFrame {
 
     private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
         // TODO add your handling code here:
-        txtNis.setEnabled(true);
+        txtNis.setEditable(true);
+        txtNis.requestFocus();
     }//GEN-LAST:event_btnCariActionPerformed
 
     /**

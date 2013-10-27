@@ -26,14 +26,14 @@ public class QueryDataKelas implements DaoDataKelas {
 
     private Connection conn = null;
 
-    final String insert = "";
-    final String update = "";
-    final String delete = "";
-    final String loadIdKelas = "";
-    final String loadNamaKelas = "";
-    final String getAll = "";
-    final String getAllIdKelas = "";
-    final String getAllNamaKelas = "";
+    final String insert = "INSERT INTO datakelas(idkelas,namakelas,jurusan,walikelas,ketuakelas,jumlahsiswa,letak) VALUES(?,?,?,?,?,?,?)";
+    final String update = "UPDATE datakelas SET namakelas=?, jurusan=?, walikelas=?, ketuakelas=?, jumlahsiswa=?, letak=? WHERE idkelas=?";
+    final String delete = "DELETE FROM datakelas WHERE idkelas=?";
+    final String loadIdKelas = "SELECT idkelas,namakelas,jurusan,walikelas,ketuakelas,jumlahsiswa,letak FROM datakelas WHERE idkelas=?";
+    final String loadNamaKelas = "SELECT idkelas,namakelas,jurusan,walikelas,ketuakelas,jumlahsiswa,letak FROM datakelas WHERE namakelas=?";
+    final String getAll = "SELECT idkelas,namakelas,jurusan,walikelas,ketuakelas,jumlahsiswa,letak FROM datakelas";
+    final String getAllIdKelas = "SELECT * FROM datakelas WHERE idkelas like ?";
+    final String getAllNamaKelas = "SELECT * FROM datakelas WHERE namakelas like ?";
     private ModelDataKelas namaKelas;
 
     public QueryDataKelas(Connection conn) {

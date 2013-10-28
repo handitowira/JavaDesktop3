@@ -11,6 +11,7 @@ import javax.swing.table.AbstractTableModel;
 /**
  *
  * @author HANDITO
+ * @version 2.0
  */
 public class TableModelBukuTelepon extends AbstractTableModel {
 

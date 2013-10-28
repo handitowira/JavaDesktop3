@@ -11,6 +11,7 @@ import kwh.model.ModelDataKelas;
 /**
  *
  * @author HANDITO
+ * @version 2.0
  */
 public interface ImplementDataKelas {
 

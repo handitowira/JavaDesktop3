@@ -21,6 +21,7 @@ import java.util.logging.Logger;
 /**
  *
  * @author HANDITO
+ * @version 2.0
  */
 public class DaoDataKelas implements ImplementDataKelas {
 

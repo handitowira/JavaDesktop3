@@ -78,7 +78,6 @@ public class ControllerDataKelas {
             mdk.setWalikelas(form.getTxtWaliKelas().getText());
             mdk.setKetuakelas(form.getTxtWaliKelas().getText());
             mdk.setJumlahsiswa(Integer.parseInt(form.getTxtJumlahSiswa().getText()));
-            System.out.print(form.getTxtLetak().getText());
             mdk.setLetak(form.getTxtLetak().getText());
             implDataKelas.insert(mdk);
         } else {
@@ -88,15 +87,25 @@ public class ControllerDataKelas {
 
     public void update() {
         if (!form.getTxtIdKelas().getText().trim().isEmpty()) {
+            System.out.println("1");
             ModelDataKelas mdk = new ModelDataKelas();
+            System.out.println("2");
             mdk.setIdkelas(Integer.parseInt(form.getTxtIdKelas().getText()));
+            System.out.println("3");
             mdk.setNamakelas(form.getTxtNamaKelas().getText());
+            System.out.println("4");
             mdk.setJurusan(form.getTxtJurusan().getText());
+            System.out.println("5");
             mdk.setWalikelas(form.getTxtWaliKelas().getText());
+            System.out.println("6");
             mdk.setKetuakelas(form.getTxtWaliKelas().getText());
+            System.out.println("7");
             mdk.setJumlahsiswa(Integer.parseInt(form.getTxtJumlahSiswa().getText()));
+            System.out.println("8");
             mdk.setLetak(form.getTxtLetak().getText());
+            System.out.println("9");
             implDataKelas.update(mdk);
+            System.out.println("10");
         } else {
             JOptionPane.showMessageDialog(form, "Pilih data yang akan diupdate");
         }

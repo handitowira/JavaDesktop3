@@ -26,12 +26,13 @@ public class FormDataKelas extends javax.swing.JFrame {
      * Creates new form FormDataKelas3 3
      */
     ControllerDataKelas cdk;
-
+    
     public FormDataKelas() {
         initComponents();
         this.setLocationRelativeTo(null);
         cdk = new ControllerDataKelas(this);
         cdk.isiTable();
+        txtIdKelas.setEnabled(false);
     }
 
     /**
@@ -465,65 +466,65 @@ public class FormDataKelas extends javax.swing.JFrame {
     public JTextField getTxtIdKelas() {
         return txtIdKelas;
     }
-
+    
     public JTextField getTxtNamaKelas() {
         return txtNamaKelas;
     }
-
+    
     public JTextField getTxtJurusan() {
         return txtJurusan;
     }
-
+    
     public JTextField getTxtWaliKelas() {
         return txtWaliKelas;
     }
-
+    
     public JTextField getTxtKetuaKelas() {
         return txtKetuaKelas;
     }
-
+    
     public JTextField getTxtJumlahSiswa() {
         return txtJumlahSiswa;
     }
-
+    
     public JTextField getTxtLetak() {
         return txtLetak;
     }
-
+    
     public JTextField getTxtCari() {
         return txtCari;
     }
-
+    
     public JTable getTbData() {
         return tbData;
     }
-
+    
     public JButton getBtnInsert() {
         return btnInsert;
     }
-
+    
     public JButton getBtnUpdate() {
         return btnUpdate;
     }
-
+    
     public JButton getBtnDelete() {
         return btnDelete;
     }
-
+    
     public JButton getBtnReset() {
         return btnReset;
     }
-
+    
     public JButton getBtnSelect() {
         return btnSelect;
     }
-
+    
     public JButton getBtnCari() {
         return btnCari;
     }
-
+    
     public JButton getBtnResetCari() {
         return btnResetCari;
     }
-
+    
 }

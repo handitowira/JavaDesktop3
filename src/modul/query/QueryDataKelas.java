@@ -182,7 +182,7 @@ public class QueryDataKelas implements DaoDataKelas {
         List<ModelDataKelas> list = new ArrayList<ModelDataKelas>();
         try {
             PreparedStatement st = conn.prepareStatement(getAllNamaKelas);
-            st.setString(2, "%" + namaKelas + "%");
+            st.setString(1, "%" + namaKelas + "%");
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 ModelDataKelas mdk = new ModelDataKelas();

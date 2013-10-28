@@ -5,11 +5,16 @@
  */
 package kwh.view;
 
+import kwh.controller.ControllerDataKelas;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *

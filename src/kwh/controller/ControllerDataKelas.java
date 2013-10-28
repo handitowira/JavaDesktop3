@@ -51,13 +51,18 @@ public class ControllerDataKelas {
     }
 
     public void isiField(int row) {
-        form.getTxtIdKelas().setText(lmdk.get(row).getIdkelas());
+        form.getTxtIdKelas().setText(lmdk.get(row).getIdkelas().toString());
         form.getTxtNamaKelas().setText(lmdk.get(row).getNamakelas());
         form.getTxtJurusan().setText(lmdk.get(row).getJurusan());
         form.getTxtWaliKelas().setText(lmdk.get(row).getWalikelas());
         form.getTxtKetuaKelas().setText(lmdk.get(row).getKetuakelas());
         form.getTxtJumlahSiswa().setText(lmdk.get(row).getJumlahsiswa().toString());
         form.getTxtLetak().setText(lmdk.get(row).getLetak());
+    }
+
+    public void select() {
+        implDataKelas.getCariNamaKelas(form.getTxtCari().getText());
+        isiTableCariNamaKelas();
     }
 
     public void insert() {
@@ -73,6 +78,7 @@ public class ControllerDataKelas {
             mdk.setWalikelas(form.getTxtWaliKelas().getText());
             mdk.setKetuakelas(form.getTxtWaliKelas().getText());
             mdk.setJumlahsiswa(Integer.parseInt(form.getTxtJumlahSiswa().getText()));
+            System.out.print(form.getTxtLetak().getText());
             mdk.setLetak(form.getTxtLetak().getText());
             implDataKelas.insert(mdk);
         } else {
@@ -83,7 +89,7 @@ public class ControllerDataKelas {
     public void update() {
         if (!form.getTxtIdKelas().getText().trim().isEmpty()) {
             ModelDataKelas mdk = new ModelDataKelas();
-            mdk.setIdkelas(form.getTxtIdKelas().getText());
+            mdk.setIdkelas(Integer.parseInt(form.getTxtIdKelas().getText()));
             mdk.setNamakelas(form.getTxtNamaKelas().getText());
             mdk.setJurusan(form.getTxtJurusan().getText());
             mdk.setWalikelas(form.getTxtWaliKelas().getText());
@@ -98,7 +104,7 @@ public class ControllerDataKelas {
 
     public void delete() {
         if (!form.getTxtIdKelas().getText().trim().isEmpty()) {
-            String id = form.getTxtIdKelas().getText();
+            int id = Integer.parseInt(form.getTxtIdKelas().getText());
             implDataKelas.delete(id);
         } else {
             JOptionPane.showMessageDialog(form, "Pilih data yang akan dihapus");
@@ -136,7 +142,7 @@ public class ControllerDataKelas {
     }
 
     public void isiTableCariJumlahSiswa() {
-        lmdk = implDataKelas.getCariJumlahSiswa(Integer.parseInt(form.getTxtCari().getText()));
+        lmdk = implDataKelas.getCariJumlahSiswa(form.getTxtCari().getText());
         TableModelDataKelas tmdk = new TableModelDataKelas(lmdk);
         form.getTbData().setModel(tmdk);
     }
@@ -194,7 +200,7 @@ public class ControllerDataKelas {
 
     public void cariJumlahSiswa() {
         if (!form.getTxtCari().getText().trim().isEmpty()) {
-            implDataKelas.getCariJumlahSiswa(Integer.parseInt(form.getTxtCari().getText()));
+            implDataKelas.getCariJumlahSiswa(form.getTxtCari().getText());
             isiTableCariJumlahSiswa();
         } else {
             JOptionPane.showMessageDialog(form, "Silahkan ketikkan Jumlah Siswa");

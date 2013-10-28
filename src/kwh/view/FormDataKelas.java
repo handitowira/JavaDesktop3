@@ -23,11 +23,15 @@ import java.util.Map;
 public class FormDataKelas extends javax.swing.JFrame {
 
     /**
-     * Creates new form FormDataKelas
+     * Creates new form FormDataKelas3 3
      */
+    ControllerDataKelas cdk;
+
     public FormDataKelas() {
         initComponents();
         this.setLocationRelativeTo(null);
+        cdk = new ControllerDataKelas(this);
+        cdk.isiTable();
     }
 
     /**
@@ -91,6 +95,12 @@ public class FormDataKelas extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel8.setText("Letak Kelas");
 
+        txtLetak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLetakActionPerformed(evt);
+            }
+        });
+
         txtJumlahSiswa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtJumlahSiswaActionPerformed(evt);
@@ -139,9 +149,14 @@ public class FormDataKelas extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel10.setText("Pencarian Berdasarkan");
 
-        cmbCari.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nama Kelas", "Jurusan", "Wali Kelas", "Ketua Kelas", "Jumlah Siswa", "Letak Kelas" }));
+        cmbCari.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Id Kelas", "Nama Kelas", "Jurusan", "Wali Kelas", "Ketua Kelas", "Jumlah Siswa", "Letak Kelas" }));
 
         btnCari.setText("Cari");
+        btnCari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCariActionPerformed(evt);
+            }
+        });
 
         tbData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -154,11 +169,26 @@ public class FormDataKelas extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tbData.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbDataMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbData);
 
         btnSelect.setText("Select All");
+        btnSelect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSelectActionPerformed(evt);
+            }
+        });
 
         btnResetCari.setText("Reset");
+        btnResetCari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetCariActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -297,19 +327,73 @@ public class FormDataKelas extends javax.swing.JFrame {
 
     private void btnInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertActionPerformed
         // TODO add your handling code here:
+        cdk.insert();
+        cdk.isiTable();
+        cdk.reset();
     }//GEN-LAST:event_btnInsertActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
+        cdk.update();
+        cdk.isiTable();
+        cdk.reset();
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
+        cdk.delete();
+        cdk.isiTable();
+        cdk.reset();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         // TODO add your handling code here:
+        cdk.reset();
     }//GEN-LAST:event_btnResetActionPerformed
+
+    private void btnResetCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetCariActionPerformed
+        // TODO add your handling code here:
+        cdk.resetCari();
+    }//GEN-LAST:event_btnResetCariActionPerformed
+
+    private void tbDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbDataMouseClicked
+        // TODO add your handling code here:
+        cdk.isiField(tbData.getSelectedRow());
+    }//GEN-LAST:event_tbDataMouseClicked
+
+    private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
+        // TODO add your handling code here:
+        if (cmbCari.getModel().getSelectedItem().toString().contentEquals("Id Kelas")) {
+            cdk.cariIdKelas();
+        }
+        if (cmbCari.getModel().getSelectedItem().toString().contentEquals("Nama Kelas")) {
+            cdk.cariNamaKelas();
+        }
+        if (cmbCari.getModel().getSelectedItem().toString().contentEquals("Jurusan")) {
+            cdk.cariJurusan();
+        }
+        if (cmbCari.getModel().getSelectedItem().toString().contentEquals("Wali Kelas")) {
+            cdk.cariWaliKelas();
+        }
+        if (cmbCari.getModel().getSelectedItem().toString().contentEquals("Ketua Kelas")) {
+            cdk.cariKetuaKelas();
+        }
+        if (cmbCari.getModel().getSelectedItem().toString().contentEquals("Jumlah Siswa")) {
+            cdk.cariJumlahSiswa();
+        }
+        if (cmbCari.getModel().getSelectedItem().toString().contentEquals("Letak")) {
+            cdk.cariLetak();
+        }
+    }//GEN-LAST:event_btnCariActionPerformed
+
+    private void btnSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectActionPerformed
+        // TODO add your handling code here:
+        cdk.select();
+    }//GEN-LAST:event_btnSelectActionPerformed
+
+    private void txtLetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLetakActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtLetakActionPerformed
 
     /**
      * @param args the command line arguments

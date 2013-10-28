@@ -12,7 +12,7 @@ package kwh.model;
  */
 public class ModelDataKelas {
 
-    private String idkelas;
+    private Integer idkelas;
     private String namakelas;
     private String jurusan;
     private String walikelas;
@@ -23,14 +23,14 @@ public class ModelDataKelas {
     /**
      * @return the idkelas
      */
-    public String getIdkelas() {
+    public Integer getIdkelas() {
         return idkelas;
     }
 
     /**
      * @param idkelas the idkelas to set
      */
-    public void setIdkelas(String idkelas) {
+    public void setIdkelas(Integer idkelas) {
         this.idkelas = idkelas;
     }
 

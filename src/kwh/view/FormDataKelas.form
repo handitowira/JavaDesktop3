@@ -234,6 +234,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtLetak">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtLetakActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtJumlahSiswa">
       <Events>
@@ -309,13 +312,14 @@
     <Component class="javax.swing.JComboBox" name="cmbCari">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="6">
-            <StringItem index="0" value="Nama Kelas"/>
-            <StringItem index="1" value="Jurusan"/>
-            <StringItem index="2" value="Wali Kelas"/>
-            <StringItem index="3" value="Ketua Kelas"/>
-            <StringItem index="4" value="Jumlah Siswa"/>
-            <StringItem index="5" value="Letak Kelas"/>
+          <StringArray count="7">
+            <StringItem index="0" value="Id Kelas"/>
+            <StringItem index="1" value="Nama Kelas"/>
+            <StringItem index="2" value="Jurusan"/>
+            <StringItem index="3" value="Wali Kelas"/>
+            <StringItem index="4" value="Ketua Kelas"/>
+            <StringItem index="5" value="Jumlah Siswa"/>
+            <StringItem index="6" value="Letak Kelas"/>
           </StringArray>
         </Property>
       </Properties>
@@ -326,6 +330,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Cari"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCariActionPerformed"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>
@@ -345,6 +352,9 @@
               </Table>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbDataMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -352,11 +362,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Select All"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSelectActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnResetCari">
       <Properties>
         <Property name="text" type="java.lang.String" value="Reset"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnResetCariActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

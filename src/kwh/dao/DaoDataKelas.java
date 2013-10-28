@@ -27,7 +27,7 @@ public class DaoDataKelas implements ImplementDataKelas {
 
     Connection conn;
 
-    final String insert = "INSERT INTO datakelas(idkelas,namakelas,jurusan,walikelas,ketuakelas,jumlahsiswa,letak) VALUES(?,?,?,?,?,?,?)";
+    final String insert = "INSERT INTO datakelas(namakelas,jurusan,walikelas,ketuakelas,jumlahsiswa,letak) VALUES(?,?,?,?,?,?)";
     final String update = "UPDATE datakelas SET namakelas=?, jurusan=?, walikelas=?, ketuakelas=?, jumlahsiswa=?, letak=? WHERE idkelas=?";
     final String delete = "DELETE FROM datakelas WHERE idkelas=?";
     final String select = "SELECT * FROM datakelas";
@@ -55,10 +55,6 @@ public class DaoDataKelas implements ImplementDataKelas {
             statement.setInt(5, mdk.getJumlahsiswa());
             statement.setString(6, mdk.getLetak());
             statement.executeUpdate();
-            ResultSet rs = statement.getGeneratedKeys();
-            while (rs.next()) {
-                mdk.setIdkelas(rs.getString(1));
-            }
         } catch (SQLException ex) {
             ex.printStackTrace();
         } finally {
@@ -75,7 +71,7 @@ public class DaoDataKelas implements ImplementDataKelas {
         PreparedStatement statement = null;
         try {
             statement = conn.prepareStatement(update);
-            statement.setString(1, mdk.getIdkelas());
+            statement.setInt(1, mdk.getIdkelas());
             statement.setString(2, mdk.getNamakelas());
             statement.setString(3, mdk.getJurusan());
             statement.setString(4, mdk.getWalikelas());
@@ -95,11 +91,11 @@ public class DaoDataKelas implements ImplementDataKelas {
     }
 
     @Override
-    public void delete(String idKelas) {
+    public void delete(int idKelas) {
         PreparedStatement statement = null;
         try {
             statement = conn.prepareStatement(delete);
-            statement.setString(1, idKelas);
+            statement.setInt(1, idKelas);
             statement.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -121,7 +117,7 @@ public class DaoDataKelas implements ImplementDataKelas {
             ResultSet rs = st.executeQuery(select);
             while (rs.next()) {
                 ModelDataKelas mdk = new ModelDataKelas();
-                mdk.setIdkelas(rs.getString("idkelas"));
+                mdk.setIdkelas(rs.getInt("idkelas"));
                 mdk.setNamakelas(rs.getString("namakelas"));
                 mdk.setJurusan(rs.getString("jurusan"));
                 mdk.setWalikelas(rs.getString("walikelas"));
@@ -146,7 +142,7 @@ public class DaoDataKelas implements ImplementDataKelas {
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 ModelDataKelas mdk = new ModelDataKelas();
-                mdk.setIdkelas(rs.getString("idkelas"));
+                mdk.setIdkelas(rs.getInt("idkelas"));
                 mdk.setNamakelas(rs.getString("namakelas"));
                 mdk.setJurusan(rs.getString("jurusan"));
                 mdk.setWalikelas(rs.getString("walikelas"));
@@ -171,7 +167,7 @@ public class DaoDataKelas implements ImplementDataKelas {
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 ModelDataKelas mdk = new ModelDataKelas();
-                mdk.setIdkelas(rs.getString("idkelas"));
+                mdk.setIdkelas(rs.getInt("idkelas"));
                 mdk.setNamakelas(rs.getString("namakelas"));
                 mdk.setJurusan(rs.getString("jurusan"));
                 mdk.setWalikelas(rs.getString("walikelas"));
@@ -196,7 +192,7 @@ public class DaoDataKelas implements ImplementDataKelas {
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 ModelDataKelas mdk = new ModelDataKelas();
-                mdk.setIdkelas(rs.getString("idkelas"));
+                mdk.setIdkelas(rs.getInt("idkelas"));
                 mdk.setNamakelas(rs.getString("namakelas"));
                 mdk.setJurusan(rs.getString("jurusan"));
                 mdk.setWalikelas(rs.getString("walikelas"));
@@ -221,7 +217,7 @@ public class DaoDataKelas implements ImplementDataKelas {
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 ModelDataKelas mdk = new ModelDataKelas();
-                mdk.setIdkelas(rs.getString("idkelas"));
+                mdk.setIdkelas(rs.getInt("idkelas"));
                 mdk.setNamakelas(rs.getString("namakelas"));
                 mdk.setJurusan(rs.getString("jurusan"));
                 mdk.setWalikelas(rs.getString("walikelas"));
@@ -246,7 +242,7 @@ public class DaoDataKelas implements ImplementDataKelas {
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 ModelDataKelas mdk = new ModelDataKelas();
-                mdk.setIdkelas(rs.getString("idkelas"));
+                mdk.setIdkelas(rs.getInt("idkelas"));
                 mdk.setNamakelas(rs.getString("namakelas"));
                 mdk.setJurusan(rs.getString("jurusan"));
                 mdk.setWalikelas(rs.getString("walikelas"));
@@ -262,7 +258,7 @@ public class DaoDataKelas implements ImplementDataKelas {
     }
 
     @Override
-    public List<ModelDataKelas> getCariJumlahSiswa(Integer jumlahSiswa) {
+    public List<ModelDataKelas> getCariJumlahSiswa(String jumlahSiswa) {
         List<ModelDataKelas> lmdk = null;
         try {
             lmdk = new ArrayList<ModelDataKelas>();
@@ -271,7 +267,7 @@ public class DaoDataKelas implements ImplementDataKelas {
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 ModelDataKelas mdk = new ModelDataKelas();
-                mdk.setIdkelas(rs.getString("idkelas"));
+                mdk.setIdkelas(rs.getInt("idkelas"));
                 mdk.setNamakelas(rs.getString("namakelas"));
                 mdk.setJurusan(rs.getString("jurusan"));
                 mdk.setWalikelas(rs.getString("walikelas"));
@@ -296,7 +292,7 @@ public class DaoDataKelas implements ImplementDataKelas {
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 ModelDataKelas mdk = new ModelDataKelas();
-                mdk.setIdkelas(rs.getString("idkelas"));
+                mdk.setIdkelas(rs.getInt("idkelas"));
                 mdk.setNamakelas(rs.getString("namakelas"));
                 mdk.setJurusan(rs.getString("jurusan"));
                 mdk.setWalikelas(rs.getString("walikelas"));
@@ -315,5 +311,4 @@ public class DaoDataKelas implements ImplementDataKelas {
     public List<ModelDataKelas> getCariSemua(String semua) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
 }

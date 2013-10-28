@@ -6,7 +6,7 @@
 package kwh.dao;
 
 import java.util.List;
-import kwh.model.ModelDataKelas;
+import kwh.model.*;
 
 /**
  *
@@ -19,7 +19,7 @@ public interface ImplementDataKelas {
 
     public void update(ModelDataKelas mdk);
 
-    public void delete(String idKelas);
+    public void delete(int idKelas);
 
     public List<ModelDataKelas> getAll();
 
@@ -33,7 +33,7 @@ public interface ImplementDataKelas {
 
     public List<ModelDataKelas> getCariKetuaKelas(String ketuaKelas);
 
-    public List<ModelDataKelas> getCariJumlahSiswa(Integer jumlahSiswa);
+    public List<ModelDataKelas> getCariJumlahSiswa(String jumlahSiswa);
 
     public List<ModelDataKelas> getCariLetak(String letak);
 

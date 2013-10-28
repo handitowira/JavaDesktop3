@@ -552,8 +552,8 @@ public class FormDataKelas extends javax.swing.JFrame {
     public JButton getBtnResetCari() {
         return btnResetCari;
     }
-    
-    public JButton getBtnExit(){
+
+    public JButton getBtnExit() {
         return btnExit;
     }
 

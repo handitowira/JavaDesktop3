@@ -29,17 +29,17 @@ public class DaoDataKelas implements ImplementDataKelas {
 
     Connection conn;
 
-    final String insert = "INSERT INTO datakelas(idkelas,namakelas,jurusan,walikelas,ketuakelas,jumlahsiswa,letak) VALUES(?,?,?,?,?,?,?)";
-    final String update = "UPDATE datakelas SET namakelas=?, jurusan=?, walikelas=?, ketuakelas=?, jumlahsiswa=?, letak=? WHERE idkelas=?";
-    final String delete = "DELETE FROM datakelas WHERE idkelas=?";
-    final String select = "SELECT * FROM datakelas";
-    final String cariidkelas = "SELECT * FROM datakelas WHERE idkelas like ?";
-    final String carinamakelas = "SELECT * FROM datakelas WHERE namakelas like ?";
-    final String carijurusan = "SELECT * FROM datakelas WHERE jurusan like ?";
-    final String cariwalikelas = "SELECT * FROM datakelas WHERE walikelas like ?";
-    final String cariketuakelas = "SELECT * FROM datakelas WHERE ketuakelas like ?";
-    final String carijumlahsiswa = "SELECT * FROM datakelas WHERE jumlahsiswa like ?";
-    final String cariletak = "SELECT * FROM datakelas WHERE letak like ?";
+    final String insert = "INSERT INTO mydatakelas(namakelas,jurusan,walikelas,ketuakelas,jumlahsiswa,letak) VALUES(?,?,?,?,?,?)";
+    final String update = "UPDATE mydatakelas SET namakelas=?, jurusan=?, walikelas=?, ketuakelas=?, jumlahsiswa=?, letak=? WHERE idkelas=?";
+    final String delete = "DELETE FROM mydatakelas WHERE idkelas=?";
+    final String select = "SELECT * FROM mydatakelas";
+    final String cariidkelas = "SELECT * FROM mydatakelas WHERE idkelas like ?";
+    final String carinamakelas = "SELECT * FROM mydatakelas WHERE namakelas like ?";
+    final String carijurusan = "SELECT * FROM mydatakelas WHERE jurusan like ?";
+    final String cariwalikelas = "SELECT * FROM mydatakelas WHERE walikelas like ?";
+    final String cariketuakelas = "SELECT * FROM mydatakelas WHERE ketuakelas like ?";
+    final String carijumlahsiswa = "SELECT * FROM mydatakelas WHERE jumlahsiswa like ?";
+    final String cariletak = "SELECT * FROM mydatakelas WHERE letak like ?";
 
     public DaoDataKelas() {
         conn = DBConnection.connection();
@@ -57,6 +57,10 @@ public class DaoDataKelas implements ImplementDataKelas {
             statement.setInt(5, mdk.getJumlahsiswa());
             statement.setString(6, mdk.getLetak());
             statement.executeUpdate();
+            ResultSet rs = statement.getGeneratedKeys();
+            while (rs.next()) {
+                mdk.setIdkelas(rs.getInt(1));
+            }
         } catch (SQLException ex) {
             ex.printStackTrace();
         } finally {

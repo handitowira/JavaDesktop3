@@ -32,11 +32,11 @@ public class ControllerDataKelas {
         lmdk = implDataKelas.getAll();
     }
 
-    public void exit(){
+    public void exit() {
         form.dispose();
         JOptionPane.showMessageDialog(form, "Terima Kasih telah mencoba :)");
     }
-    
+
     public void reset() {
         form.getTxtIdKelas().setText("");
         form.getTxtNamaKelas().setText("");
@@ -83,7 +83,7 @@ public class ControllerDataKelas {
             mdk.setNamakelas(form.getTxtNamaKelas().getText());
             mdk.setJurusan(form.getTxtJurusan().getText());
             mdk.setWalikelas(form.getTxtWaliKelas().getText());
-            mdk.setKetuakelas(form.getTxtWaliKelas().getText());
+            mdk.setKetuakelas(form.getTxtKetuaKelas().getText());
             mdk.setJumlahsiswa(Integer.parseInt(form.getTxtJumlahSiswa().getText()));
             mdk.setLetak(form.getTxtLetak().getText());
             implDataKelas.insert(mdk);
@@ -98,7 +98,7 @@ public class ControllerDataKelas {
             mdk.setNamakelas(form.getTxtNamaKelas().getText());
             mdk.setJurusan(form.getTxtJurusan().getText());
             mdk.setWalikelas(form.getTxtWaliKelas().getText());
-            mdk.setKetuakelas(form.getTxtWaliKelas().getText());
+            mdk.setKetuakelas(form.getTxtKetuaKelas().getText());
             mdk.setJumlahsiswa(Integer.parseInt(form.getTxtJumlahSiswa().getText()));
             mdk.setLetak(form.getTxtLetak().getText());
             mdk.setIdkelas(Integer.parseInt(form.getTxtIdKelas().getText()));
@@ -116,7 +116,7 @@ public class ControllerDataKelas {
             JOptionPane.showMessageDialog(form, "Pilih data yang akan dihapus");
         }
     }
-    
+
     public void isiTableCariIdKelas() {
         lmdk = implDataKelas.getCariIdKelas(form.getTxtCari().getText());
         TableModelDataKelas tmdk = new TableModelDataKelas(lmdk);

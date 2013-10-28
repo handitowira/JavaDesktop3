@@ -218,6 +218,17 @@ public class FormDataKelas extends javax.swing.JFrame {
             }
         });
 
+        txtNamaKelas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtNamaKelasMouseClicked(evt);
+            }
+        });
+        txtNamaKelas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNamaKelasActionPerformed(evt);
+            }
+        });
+
         txtIdKelas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIdKelasActionPerformed(evt);
@@ -510,6 +521,18 @@ public class FormDataKelas extends javax.swing.JFrame {
         txtNamaKelas.setEditable(true);
         txtNamaKelas.requestFocus();
     }//GEN-LAST:event_btnCariActionPerformed
+
+    private void txtNamaKelasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNamaKelasActionPerformed
+        // TODO add your handling code here:
+        loadRecordsNama();
+        updateRowNama();
+    }//GEN-LAST:event_txtNamaKelasActionPerformed
+
+    private void txtNamaKelasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNamaKelasMouseClicked
+        // TODO add your handling code here:
+        loadRecordsNama();
+        updateRowNama();
+    }//GEN-LAST:event_txtNamaKelasMouseClicked
 
     /**
      * @param args the command line arguments

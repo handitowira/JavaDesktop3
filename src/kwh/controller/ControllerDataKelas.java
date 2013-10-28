@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
  *
  * @author HANDITO
  * @version 2.0
+ * @keterangan masih dalam proses pak, belum fix, secepatnya saya kirim ulang bila mvc saya telah selesai
  */
 public class ControllerDataKelas {
 

@@ -22,13 +22,14 @@ import java.util.logging.Logger;
  *
  * @author HANDITO
  * @version 2.0
- * @keterangan masih dalam proses pak, belum fix, secepatnya saya kirim ulang bila mvc saya telah selesai
+ * @keterangan masih dalam proses pak, belum fix, secepatnya saya kirim ulang
+ * bila mvc saya telah selesai
  */
 public class DaoDataKelas implements ImplementDataKelas {
 
     Connection conn;
 
-    final String insert = "INSERT INTO datakelas(namakelas,jurusan,walikelas,ketuakelas,jumlahsiswa,letak) VALUES(?,?,?,?,?,?)";
+    final String insert = "INSERT INTO datakelas(idkelas,namakelas,jurusan,walikelas,ketuakelas,jumlahsiswa,letak) VALUES(?,?,?,?,?,?,?)";
     final String update = "UPDATE datakelas SET namakelas=?, jurusan=?, walikelas=?, ketuakelas=?, jumlahsiswa=?, letak=? WHERE idkelas=?";
     final String delete = "DELETE FROM datakelas WHERE idkelas=?";
     final String select = "SELECT * FROM datakelas";
@@ -72,13 +73,13 @@ public class DaoDataKelas implements ImplementDataKelas {
         PreparedStatement statement = null;
         try {
             statement = conn.prepareStatement(update);
-            statement.setInt(1, mdk.getIdkelas());
-            statement.setString(2, mdk.getNamakelas());
-            statement.setString(3, mdk.getJurusan());
-            statement.setString(4, mdk.getWalikelas());
-            statement.setString(5, mdk.getKetuakelas());
-            statement.setInt(6, mdk.getJumlahsiswa());
-            statement.setString(7, mdk.getLetak());
+            statement.setString(1, mdk.getNamakelas());
+            statement.setString(2, mdk.getJurusan());
+            statement.setString(3, mdk.getWalikelas());
+            statement.setString(4, mdk.getKetuakelas());
+            statement.setInt(5, mdk.getJumlahsiswa());
+            statement.setString(6, mdk.getLetak());
+            statement.setInt(7, mdk.getIdkelas());
             statement.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();

@@ -74,6 +74,7 @@ public class FormDataKelas extends javax.swing.JFrame {
         tbData = new javax.swing.JTable();
         btnSelect = new javax.swing.JButton();
         btnResetCari = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -193,17 +194,25 @@ public class FormDataKelas extends javax.swing.JFrame {
             }
         });
 
+        btnExit.setText("Keluar");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel9)
-                .addGap(189, 189, 189))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel9)
+                        .addGap(113, 113, 113)
+                        .addComponent(btnExit))
                     .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -264,8 +273,13 @@ public class FormDataKelas extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(jLabel9)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel9))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnExit)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -340,6 +354,7 @@ public class FormDataKelas extends javax.swing.JFrame {
         cdk.update();
         cdk.isiTable();
         cdk.reset();
+        btnInsert.setEnabled(true);
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
@@ -347,11 +362,13 @@ public class FormDataKelas extends javax.swing.JFrame {
         cdk.delete();
         cdk.isiTable();
         cdk.reset();
+        btnInsert.setEnabled(true);
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         // TODO add your handling code here:
         cdk.reset();
+        btnInsert.setEnabled(true);
     }//GEN-LAST:event_btnResetActionPerformed
 
     private void btnResetCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetCariActionPerformed
@@ -362,6 +379,7 @@ public class FormDataKelas extends javax.swing.JFrame {
     private void tbDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbDataMouseClicked
         // TODO add your handling code here:
         cdk.isiField(tbData.getSelectedRow());
+        btnInsert.setEnabled(false);
     }//GEN-LAST:event_tbDataMouseClicked
 
     private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
@@ -397,6 +415,11 @@ public class FormDataKelas extends javax.swing.JFrame {
     private void txtLetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLetakActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLetakActionPerformed
+
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        // TODO add your handling code here:
+        cdk.exit();
+    }//GEN-LAST:event_btnExitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -436,6 +459,7 @@ public class FormDataKelas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCari;
     private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnExit;
     private javax.swing.JButton btnInsert;
     private javax.swing.JButton btnReset;
     private javax.swing.JButton btnResetCari;
@@ -527,6 +551,10 @@ public class FormDataKelas extends javax.swing.JFrame {
 
     public JButton getBtnResetCari() {
         return btnResetCari;
+    }
+    
+    public JButton getBtnExit(){
+        return btnExit;
     }
 
 }

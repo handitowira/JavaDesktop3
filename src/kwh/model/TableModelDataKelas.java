@@ -13,11 +13,11 @@ import javax.swing.table.AbstractTableModel;
  * @author HANDITO
  * @version 2.0
  */
-public class TableModelBukuTelepon extends AbstractTableModel {
+public class TableModelDataKelas extends AbstractTableModel {
 
     List<ModelDataKelas> lmdk;
 
-    public TableModelBukuTelepon(List<ModelDataKelas> lmdk) {
+    public TableModelDataKelas(List<ModelDataKelas> lmdk) {
         this.lmdk = lmdk;
     }
 

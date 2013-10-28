@@ -137,6 +137,31 @@ public class DaoDataKelas implements ImplementDataKelas {
     }
 
     @Override
+    public List<ModelDataKelas> getCariIdKelas(String idKelas) {
+        List<ModelDataKelas> lmdk = null;
+        try {
+            lmdk = new ArrayList<ModelDataKelas>();
+            PreparedStatement st = conn.prepareStatement(cariidkelas);
+            st.setString(1, "%" + idKelas + "%");
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                ModelDataKelas mdk = new ModelDataKelas();
+                mdk.setIdkelas(rs.getString("idkelas"));
+                mdk.setNamakelas(rs.getString("namakelas"));
+                mdk.setJurusan(rs.getString("jurusan"));
+                mdk.setWalikelas(rs.getString("walikelas"));
+                mdk.setKetuakelas(rs.getString("ketuakelas"));
+                mdk.setJumlahsiswa(rs.getInt("jumlahsiswa"));
+                mdk.setLetak(rs.getString("letak"));
+                lmdk.add(mdk);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DaoDataKelas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lmdk;
+    }
+
+    @Override
     public List<ModelDataKelas> getCariNamaKelas(String namaKelas) {
         List<ModelDataKelas> lmdk = null;
         try {

@@ -23,6 +23,8 @@ public interface ImplementDataKelas {
 
     public List<ModelDataKelas> getAll();
 
+    public List<ModelDataKelas> getCariIdKelas(String idKelas);
+
     public List<ModelDataKelas> getCariNamaKelas(String namaKelas);
 
     public List<ModelDataKelas> getCariJurusan(String jurusan);

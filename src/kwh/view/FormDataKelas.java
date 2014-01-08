@@ -154,6 +154,17 @@ public class FormDataKelas extends javax.swing.JFrame {
         jLabel10.setText("Pencarian Berdasarkan");
 
         cmbCari.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Id Kelas", "Nama Kelas", "Jurusan", "Wali Kelas", "Ketua Kelas", "Jumlah Siswa", "Letak Kelas" }));
+        cmbCari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbCariActionPerformed(evt);
+            }
+        });
+
+        txtCari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCariActionPerformed(evt);
+            }
+        });
 
         btnCari.setText("Cari");
         btnCari.addActionListener(new java.awt.event.ActionListener() {
@@ -420,6 +431,14 @@ public class FormDataKelas extends javax.swing.JFrame {
         // TODO add your handling code here:
         cdk.exit();
     }//GEN-LAST:event_btnExitActionPerformed
+
+    private void cmbCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCariActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbCariActionPerformed
+
+    private void txtCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCariActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCariActionPerformed
 
     /**
      * @param args the command line arguments

@@ -18,8 +18,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * ini adalah class QueryDataKelas yang mengimplementasi class abstract
+ * DaoDataKelas
  *
- * @author HANDITO
+ * @author Handitowira
  * @version 1.0
  */
 public class QueryDataKelas implements DaoDataKelas {
@@ -36,10 +38,22 @@ public class QueryDataKelas implements DaoDataKelas {
     final String getAllNamaKelas = "SELECT * FROM datakelas WHERE namakelas like ?";
     private ModelDataKelas namaKelas;
 
+    /**
+     * Constructor QueryDataKelas(Connection conn) berisi koneksi menuju
+     * database
+     *
+     * @param conn
+     */
     public QueryDataKelas(Connection conn) {
         this.conn = conn;
     }
 
+    /**
+     * fungsi method insert yaitu memasukkan data ke dalam database
+     *
+     * @param mdk dari class ModelDataKelas mengambil data set dan get dari
+     * berbagai atribut di class tsb.
+     */
     @Override
     public void insert(ModelDataKelas mdk) {
         try {
@@ -57,6 +71,13 @@ public class QueryDataKelas implements DaoDataKelas {
         }
     }
 
+    /**
+     * mendelete data dari database
+     *
+     * @param idKelas karena query delete nantinya akan berhubungan dengan
+     * primary key "idKelas", hal ini penting sebagai tumpuan dalam menghapus
+     * sebuah data
+     */
     @Override
     public void delete(String idKelas) {
         try {
@@ -68,6 +89,14 @@ public class QueryDataKelas implements DaoDataKelas {
         }
     }
 
+    /**
+     * fungsi method update yaitu mengedit data ke pada database
+     *
+     * @param mdk dari class ModelDataKelas mengambil data set dan get dari
+     * berbagai atribut di class tsb.
+     * @param oldIdKelas berfungsi sebagai tumpuan pengupdatean data ketika
+     * nantinya akan di update data baru
+     */
     @Override
     public void update(String oldIdKelas, ModelDataKelas mdk) {
         try {
@@ -130,6 +159,11 @@ public class QueryDataKelas implements DaoDataKelas {
         return namaKelas;
     }
 
+    /**
+     * menampilkan semua data ke tabel
+     *
+     * @return list
+     */
     @Override
     public List<ModelDataKelas> getAll() {
         List<ModelDataKelas> list = new ArrayList<ModelDataKelas>();
@@ -153,6 +187,12 @@ public class QueryDataKelas implements DaoDataKelas {
         return list;
     }
 
+    /**
+     * menampilkan data ke tabel berdasarkan pencarian berdasar id kelas
+     *
+     * @param idKelas 
+     * @return list
+     */
     @Override
     public List<ModelDataKelas> getAllIdKelas(String idKelas) {
         List<ModelDataKelas> list = new ArrayList<ModelDataKelas>();
@@ -177,6 +217,12 @@ public class QueryDataKelas implements DaoDataKelas {
         return list;
     }
 
+    /**
+     * menampilkan data ke tabel berdasarkan pencarian berdasar nama Kelas
+     *
+     * @param namaKelas 
+     * @return list
+     */
     @Override
     public List<ModelDataKelas> getAllNamaKelas(String namaKelas) {
         List<ModelDataKelas> list = new ArrayList<ModelDataKelas>();

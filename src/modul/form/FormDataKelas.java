@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author HANDITO
+ * @author Handitowira
  * @version 1.0
  */
 public class FormDataKelas extends javax.swing.JFrame {
@@ -30,6 +30,9 @@ public class FormDataKelas extends javax.swing.JFrame {
     private int row = 0;
     private boolean status;
 
+    /**
+     * ketika frame di run, maka akan mengeksekusi method method di bawah ini
+     */
     public FormDataKelas() {
         initComponents();
         loadRecords();
@@ -412,6 +415,9 @@ public class FormDataKelas extends javax.swing.JFrame {
         txtIdKelas.requestFocus();
         btnEdit.setEnabled(false);
         btnDelete.setEnabled(false);
+        btnAdd.setEnabled(false);
+        btnExit.setEnabled(false);
+        btnCari.setEnabled(false);
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
@@ -454,6 +460,8 @@ public class FormDataKelas extends javax.swing.JFrame {
                     btnEdit.setEnabled(true);
                     btnDelete.setEnabled(true);
                     btnAdd.setEnabled(true);
+                    btnExit.setEnabled(true);
+                    btnCari.setEnabled(true);
                 } catch (SQLException ex) {
                     Logger.getLogger(FormDataKelas.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -477,6 +485,8 @@ public class FormDataKelas extends javax.swing.JFrame {
                     btnEdit.setEnabled(true);
                     btnDelete.setEnabled(true);
                     btnAdd.setEnabled(true);
+                    btnExit.setEnabled(true);
+                    btnCari.setEnabled(true);
                 } catch (SQLException ex) {
                     Logger.getLogger(FormDataKelas.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -494,6 +504,9 @@ public class FormDataKelas extends javax.swing.JFrame {
         txtIdKelas.requestFocus();
         btnAdd.setEnabled(false);
         btnDelete.setEnabled(false);
+        btnEdit.setEnabled(false);
+        btnExit.setEnabled(false);
+        btnCari.setEnabled(false);
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed

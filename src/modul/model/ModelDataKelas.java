@@ -6,8 +6,12 @@
 package modul.model;
 
 /**
+ * berisi method get dan set. idKelas, namaKelas, jurusan, waliKelas,
+ * ketuakelas, jumlahsiswa dan letak adalah nama dari attribute yang ada di
+ * database. Fungsi setter dan getter tersebut untuk mengambil data dari
+ * database dan memanggilnya, sebagai perantara penyaluran data
  *
- * @author HANDITO
+ * @author Handitowira
  * @version 1.0
  */
 public class ModelDataKelas {

@@ -9,8 +9,14 @@ import modul.model.ModelDataKelas;
 import java.util.List;
 
 /**
+ * class interface atau juga di sebut class abstract yang mana berfungsi agar
+ * method method yang ada di dalamnya di implementasikan di class child. atau di
+ * sebut juga seperataion of concern, dimana nantinya setiap kode akan
+ * dipisahkan sesuai dengan fungsinya, sehingga kode dibawahnya hanya perlu
+ * mengetahui secara abstrak cara mengakses data tanpa perlu mengetahui
+ * bagaimana akses ke sumber data diimplementasikan.
  *
- * @author HANDITO
+ * @author Handitowira
  * @version 1.0
  */
 public interface DaoDataKelas {

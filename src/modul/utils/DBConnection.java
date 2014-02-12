@@ -10,8 +10,13 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
+ * Class DBConnection berfungsi sebagai alat penyambung antara app dengan
+ * database pada DB_URL merupakan keterangan url dan nama database pada app
+ * ini, yaitu nama databasenya "java_desktop_3" DB_USER merupakan nama User
+ * dari MySQL yaitu "root" MySQL tidak menggunakan password sehingga
+ * DB_PASS kosongkan saja.
  *
- * @author HANDITO
+ * @author Handitowira
  * @version 1.0
  */
 public class DBConnection {
